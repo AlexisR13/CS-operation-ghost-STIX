@@ -1,0 +1,67 @@
+[
+    {
+        "type": "malware",
+        "id": "reg",
+        "name": "RegDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "malware",
+        "id": "mini",
+        "name": "MiniDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "relationship",
+        "id": "reg-drops-mini",
+        "relationship_type": "drops",
+        "source_ref": "reg",
+        "target_ref": "mini"
+    },
+    {
+        "type": "tool",
+        "id": "T1084",
+        "name": "T1084- Windows Management Instrumentation",
+        "description": "RegDuke utilise le logiciel légitime WMI pour établir sa persistence."
+    },
+    {
+        "type": "relationship",
+        "id": "reg-uses-T1084",
+        "relationship_type": "uses",
+        "source_ref": "reg",
+        "target_ref": "T1084"
+    },
+    {
+        "type": "attack-pattern",
+        "id": "T1001",
+        "name": "T1001- data obfuscation",
+        "description": "Technique de steganographie consistant à cacher de l'information dans les bits de poids faible de chaque pixel d'une image (méthode Least Significant Bit)"
+    },
+    {
+        "type": "relationship",
+        "id": "reg-uses-T1001",
+        "relationship_type": "uses",
+        "source_ref": "reg",
+        "target_ref": "T1001"
+    },
+    {
+        "type": "infrastructure",
+        "id": "CC",
+        "name": "C&C - Dropbox",
+        "description": "RegDuke utilise Dropbox comme serveur C&C et y récupère des images PNG utilisant la stenographie pour cacher des scripts"
+    },
+    {
+        "type": "relationship",
+        "id": "reg-beacons-to-CC",
+        "relationship_type": "beacons-to",
+        "source_ref": "reg",
+        "target_ref": "CC"
+    },
+    {
+        "type": "relationship",
+        "id": "CC-controls-reg",
+        "relationship_type": "controls",
+        "source_ref": "CC",
+        "target_ref": "reg"
+    }
+]

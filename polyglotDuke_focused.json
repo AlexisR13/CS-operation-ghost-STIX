@@ -1,0 +1,67 @@
+[
+    {
+        "type": "malware",
+        "id": "polyglot",
+        "name": "PolyglotDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "malware",
+        "id": "mini",
+        "name": "MiniDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "relationship",
+        "id": "polyglot-drops-mini",
+        "relationship_type": "drops",
+        "source_ref": "polyglot",
+        "target_ref": "mini"
+    },
+    {
+        "type": "attack-pattern",
+        "id": "T1140",
+        "name": "T1140- decode files",
+        "description": "Le 'dropper' de PolyglotDuke contient une charge utile chiffré avec des algorithmes personnalisés."
+    },
+    {
+        "type": "relationship",
+        "id": "polyglot-uses-T1140",
+        "relationship_type": "uses",
+        "source_ref": "polyglot",
+        "target_ref": "T1140"
+    },
+    {
+        "type": "attack-pattern",
+        "id": "T1102",
+        "name": "T1102- web service",
+        "description": "PolyglotDuke utilise des pages publiques telles que Twitter ou Reddit pour récupérer l'URL chiffré de son server C&C."
+    },
+    {
+        "type": "relationship",
+        "id": "polyglot-uses-T1102",
+        "relationship_type": "uses",
+        "source_ref": "polyglot",
+        "target_ref": "T1102"
+    },
+    {
+        "type": "infrastructure",
+        "id": "CC",
+        "name": "C&C",
+        "description": "PolyglotDuke utilise des pages publiques telles que Twitter ou Reddit pour récupérer l'URL chiffré de son server C&C."
+    },
+    {
+        "type": "relationship",
+        "id": "polyglot-beacons-to-CC",
+        "relationship_type": "beacons-to",
+        "source_ref": "polyglot",
+        "target_ref": "CC"
+    },
+    {
+        "type": "relationship",
+        "id": "CC-controls-polyglot",
+        "relationship_type": "controls",
+        "source_ref": "CC",
+        "target_ref": "polyglot"
+    }
+]

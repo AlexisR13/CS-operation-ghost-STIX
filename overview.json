@@ -1,0 +1,106 @@
+[
+    {
+        "type": "campaign",
+        "id": "operation-ghost", 
+        "name": "Operation Ghost",
+        "description": "Campagne menée par le groupe criminel ‘the Dukes’ pour espionner des gouvernements au travers de leur ministère des affaires étrangères."
+    },
+    {
+        "type": "threat-actor", 
+        "id": "dukes",
+        "name": "Dukes",
+        "description": "Groupe criminel ciblant les gouvernements, think tank et parties politiques dans un but d’espionnage."
+    },
+    {
+        "type": "relationship",
+        "id": "op-ghost-attributed-to-dukes",
+        "relationship_type": "attributed-to",
+        "source_ref": "operation-ghost",
+        "target_ref": "dukes"
+    },
+    {
+        "type": "infrastructure",
+        "id": "ministere",
+        "name": "Ministères des affaires étrangères"
+    },
+    {
+        "type": "relationship",
+        "id": "comp",
+        "relationship_type": "compromises",
+        "source_ref": "operation-ghost",
+        "target_ref": "ministere"
+    },
+    {
+        "type": "malware",
+        "id": "polyglot",
+        "name": "PolyglotDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "malware",
+        "id": "reg",
+        "name": "RegDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "malware",
+        "id": "mini",
+        "name": "MiniDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "malware",
+        "id": "fat",
+        "name": "FatDuke",
+        "is_family": "true"
+    },
+    {
+        "type": "relationship",
+        "id": "p",
+        "relationship_type": "uses",
+        "source_ref": "operation-ghost",
+        "target_ref": "polyglot"
+    },
+    {
+        "type": "relationship",
+        "id": "r",
+        "relationship_type": "uses",
+        "source_ref": "operation-ghost",
+        "target_ref": "reg"
+    },
+    {
+        "type": "relationship",
+        "id": "m",
+        "relationship_type": "uses",
+        "source_ref": "operation-ghost",
+        "target_ref": "mini"
+    },
+    {
+        "type": "relationship",
+        "id": "f",
+        "relationship_type": "uses",
+        "source_ref": "operation-ghost",
+        "target_ref": "fat"
+    },
+    {
+        "type": "relationship",
+        "id": "p-m",
+        "relationship_type": "drops",
+        "source_ref": "polyglot",
+        "target_ref": "mini"
+    },
+    {
+        "type": "relationship",
+        "id": "r-m",
+        "relationship_type": "drops",
+        "source_ref": "reg",
+        "target_ref": "mini"
+    },
+    {
+        "type": "relationship",
+        "id": "m-f",
+        "relationship_type": "drops",
+        "source_ref": "mini",
+        "target_ref": "fat"
+    }
+]
